@@ -1,0 +1,30 @@
+{
+  "format_version": 1,
+  "rng_construction": "shake_128(seed + b'|' + label)",
+  "scheme": "DHP-KEM",
+  "seed": "4448502d4b454d2d4b41542d76312d73656564",
+  "vectors": {
+    "DHP-KEM-128": {
+      "A": "251aa6fd67bec6e310b544eb9594fdaaec989fc745bfd8a50ef80b6c7ff21166",
+      "K": "fbc66f2ad02fc85bda5f20184de3b88dbf751187afe87bc3bf5d5ff00334dbc4",
+      "T": "79a213c58e9aae2bd33833f70303e533054e5aae3ae9efff3777bd42b8c7dda79cd0127e4efc385563ac824f7556d3ae",
+      "c_lwe_sha256": "567b1d5e2d9256ff1d5e336db2595e7a54ea7ed9b992c6ed7ff7c8697bbdaec6",
+      "ctx": "DHP-KEM-v1 / KSA / MODERATE",
+      "pk_ec": "178ede7f8c44b04f8823f0ea8456f25f59e67f7882c3ed31d11c58607964f4dd",
+      "pk_lwe_sha256": "2c3127438bb8cb2fb4c60df4fe836f1d057a21e224bdec5d9d4f4f381f2858de",
+      "ss_ec": "16b91203341368bc18d955aeafffac39392e8ecfd2fa4b2140c9f7291be30cb1",
+      "ss_lwe": "24f1c88cb7a29b8e96efb0ce3140c3b389f821517f96bf336d67ed7c5760522e"
+    },
+    "DHP-KEM-256": {
+      "A": "98566d472faec802566631f21a7a4a2efab7a85b1cb872551afb2be51c839a09",
+      "K": "acf3c67560c1236a26600cbe347abe653059e35a01dd3b82305d9b213d6e4a67",
+      "T": "90c92bfa4dbd184e9912b159f5744311a2739d7b51a355d48cac58c6d8f24aa0b7e2b220bff25c46c4021f62deff80e69fdfbf383633e0b156c0884ede8f9a7b",
+      "c_lwe_sha256": "fc03e04c719f7d7ce9207658b96c7294da061d35dcaabfd3e817ce78ebdb74e2",
+      "ctx": "DHP-KEM-v1 / KSA / ADVANCED",
+      "pk_ec": "cf61d0c5c7c11faf36807b359b2619e2596f8a85fa595e21c8b9a6bc7c58675f",
+      "pk_lwe_sha256": "5f70d608b467c0a88ff30e9b76b550e1076c84fac22279406ba4b802b63fe4fa",
+      "ss_ec": "434bea32e8a3c91f1d819aae1c0c78feb68953a37f858bc9cff937b53472b288",
+      "ss_lwe": "eebfe987bace8c500f85de64b8e6a2dc721df5f13e9a6ae130b3d7d3c20b0bb8"
+    }
+  }
+}
