@@ -1,2 +1,17 @@
-# DHP-KEM
-A post-quantum hybrid Key-Encapsulation Mechanism (KEM) combining classical ECDH with ML-KEM-768, featuring runnable attack simulations and explicit Saudi NCA NCS-1:2020 compliance mapping.
+DHP-KEM: Post-Quantum Hybrid Key-Encapsulation MechanismDHP-KEM (Dual Hard-Problem Key-Encapsulation Mechanism) is a hybrid public-key protocol whose security rests jointly on two computationally hard problems: the Elliptic-Curve Discrete Logarithm Problem (ECDLP) and the Module Learning-With-Errors (Module-LWE) problem.   By combining classical ECDH (Curve25519) with NIST's standardized post-quantum ML-KEM-768 via a transcript-bound HKDF Extract-then-Expand combiner, the resulting shared key remains secure as long as at least one of the underlying hard problems remains intractable.   This repository contains the Python reference implementation, a comprehensive test suite, and runnable demonstrations of cryptographic and side-channel attacks.   Key FeaturesDisjunctive Dual-Hardness: Provides a cryptographic safety net against both classical breakthroughs against lattices and quantum breakthroughs against elliptic curves.   National Regulatory Alignment: Parameter sets are explicitly mapped to the MODERATE and ADVANCED security levels of the Saudi National Cybersecurity Authority (NCA) NCS-1:2020 standards.   Transcript Binding: The derived session key is bound to a transcript hash over all public values exchanged, ensuring standalone IND-CCA2 security.   Runnable Attack Simulations: Includes educational scripts demonstrating brute-force limits, Pollard's rho, lattice distinguishers, cache attacks, fault injection, and timing leaks.   Repository Structuredhp_kem/: Core protocol implementation containing the KEM API, cryptographic components, and the HKDF combiner.   attacks/: Executable side-channel and cryptanalytic attack simulations (e.g., power_analysis.py, fault_injection.py, timing_attack.py).   tests/: A 23-test suite covering functional correctness, Known-Answer Tests (KATs), negative tampering tests, and timing checks.   benchmarks/: Scripts to measure wall-clock latency for KeyGen, Encap, and Decap operations.   examples/: Contains a reproducible script to generate a full mathematical worked example.   InstallationThis reference implementation requires Python 3.12+ and uses the cryptography and kyber-py libraries.   Bashpip install -r requirements.txt
+Quick Start (Usage API)The library presents a standard three-function KEM interface:   Pythonimport dhp_kem
+
+# 1. Bob generates long-term hybrid keys (run once)
+kp = dhp_kem.keygen(dhp_kem.DHP_KEM_128)
+
+# 2. Alice encapsulates a session key to Bob's public key (per session)
+ct, K = dhp_kem.encap(dhp_kem.DHP_KEM_128, kp.pk)
+
+# 3. Bob decapsulates the received ciphertext to recover the same session key
+K_prime = dhp_kem.decap(dhp_kem.DHP_KEM_128, kp.sk, ct)
+
+assert K == K_prime
+Running Tests and AttacksTo run the complete test suite (Correctness, Combiner properties, Negative tests, and KATs):   Bash./run_tests.sh
+To run a side-channel or cryptanalytic attack simulation:   Bashpython -m attacks.timing_attack
+python -m attacks.fault_injection
+DocumentationFor a full formal specification, mathematical proofs of correctness, and extensive mitigation strategies for side-channel attacks, please refer to the project report: DHP-KEM_CECY321_Report.pdf.   DisclaimerThis repository is a portfolio and research reference implementation written in pure Python. It is designed for educational clarity and testing, not for production deployment. Production environments require constant-time C implementations (e.g., liboqs), higher-order masking, and hardware-bound true random number generators.
