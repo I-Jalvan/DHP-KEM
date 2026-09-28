@@ -1,6 +1,6 @@
 # DHP-KEM — Reference Implementation
 
-A Python reference implementation of **DHP-KEM** (Dual Hard-Problem Key-Encapsulation Mechanism), the hybrid KEM proposed in the accompanying CECY 321 project report (`DHP-KEM_CECY321_Report_Revised.docx`).
+A Python reference implementation of **DHP-KEM** (Dual Hard-Problem Key-Encapsulation Mechanism), the hybrid KEM proposed in the accompanying CECY 321 project report
 
 DHP-KEM combines:
 
